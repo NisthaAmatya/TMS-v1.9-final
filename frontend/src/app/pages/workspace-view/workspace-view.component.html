@@ -1,0 +1,115 @@
+<head>
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+    integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+    crossorigin="anonymous"
+  />
+</head>
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item">
+      <img src="../../../assets/mitlogo.png" />
+    </a>
+
+    <a
+      role="button"
+      class="navbar-burger"
+      aria-label="menu"
+      aria-expanded="false"
+      data-target="MIT-NAV-BAR"
+    >
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="MIT-NAV-BAR" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item"> Home </a>
+      <!--Notifications-->
+      <div class="navbar-item">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <p class="navbar-link">Notifications {{ notifLen }}</p>
+          <div class="navbar-dropdown">
+            <a
+              class="navbar-item is-hoverable"
+              *ngFor="let notif of notifications"
+            >
+              <div class="navbar-item" routerLink="{{ notif.link }}">
+                {{ notif.message }}
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!--Notifications-->
+    </div>
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <ng-container *ngIf="userinfo">
+          <div class="navbar-item has-dropdown is-hoverable">
+            <p class="navbar-link">{{ userinfo["_Emp_Name"] }}'s Profile</p>
+            <div class="navbar-dropdown">
+              <a class="navbar-item logout" (click)="onLogoutButtonClicked()">
+                Logout
+              </a>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="centered-content">
+  <div class="project-manager-container">
+    <div class="sidebar has-background-white">
+      <h1 class="title has-text-primary">Workspace</h1>
+      <div class="ws-menu">
+        <div
+          class="ws-menu-item"
+          *ngFor="let w of workspaces"
+          [routerLink]="['/workspaces', w._id]"
+          (click)="getInvProjects(w._id)"
+          routerLinkActive="is-active"
+        >
+          <span
+            >{{ w._Work_Name }}
+            <div class="menu-item-option">
+              <i class="fas fa-ellipsis-v" (click)="openOptionsDialog(w)"></i>
+            </div>
+          </span>
+        </div>
+      </div>
+      <button
+        class="button is-primary has-text-white new-workspace-btn"
+        (click)="openNewWorkspaceDialog()"
+      >
+        + New Workspace
+      </button>
+    </div>
+    <!--Create new container to display projects that belong to a workspace-->
+    <div class="project-list-container has-background-light">
+      <div>
+        <h1 class="title has-text-primary">Projects</h1>
+        <!--Project Elements-->
+        <div
+          class="project"
+          *ngFor="let project of projects"
+          (click)="openProjectDialog(project)"
+        >
+          <p>{{ project._Proj_Name }}</p>
+        </div>
+        <!--<button class="circle-add-button button is-primary" routerLink="./new-project">
+          <img  src="../../../assets/plus-icon.svg">
+        </button>-->
+        <div *ngIf="!projects">
+          <h3 class="no-selection">
+            Please select a workspace to display associated projects.
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

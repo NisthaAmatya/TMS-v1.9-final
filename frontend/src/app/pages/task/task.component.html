@@ -1,0 +1,103 @@
+<head>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+</head>
+  <!--</div>-->
+  <div class="root">
+    <div class="navbar has-background-white">
+      <div class="navbar-brand">
+        <div class="navbar-item">
+          <h1 class="app-name has-gradient-text">
+            Melbourne Institute of Technology
+          </h1>
+        </div>
+      </div>
+    </div>
+    <div class="board">
+      <div class="board-bar">
+        <button class="button is-size-5 is-primary back-button" style="margin-right: 10px; margin-left: 10px;" (click)="goBack()">
+          <div class="icon">
+            <i class="fas fa-arrow-left"></i>
+          </div>
+        </button>
+        <p class="board-name">
+          Tasks
+        </p>
+        <button class="button is-size-5 is-info add-task" routerLink="./new-task">
+          <div class="icon">
+            <i class="fas fa-folder-plus"></i>
+          </div>
+        </button>
+      </div>
+      <div class="board-wrapper">
+        <div class="board-columns" cdkDropListGroup>
+          <div class="board-column">
+            <div class="column-title">
+              New
+            </div>
+            <div class="big-container"
+                cdkDropList
+                [cdkDropListData]="new"
+                (cdkDropListDropped)="drop($event)">
+              <div class="small-container is-size-5" *ngFor="let n of new" cdkDrag>
+                {{ n._Task_Name }}
+              </div>
+            </div>
+          </div>
+          <div class="board-column">
+            <div class="column-title">
+              Ongoing
+            </div>
+            <div class="big-container"
+              cdkDropList
+              [cdkDropListData]="ongoing"
+              (cdkDropListDropped)="drop($event)">
+              <div class="small-container is-size-5" *ngFor="let o of ongoing" cdkDrag>
+                <button class="button is-warning is-small" style="margin-right: 3px;" (click)="openDialog(o)">
+                  <div class="icon">
+                    <i class="fas fa-caret-square-down"></i>
+                  </div>
+                </button>
+                {{ o._Task_Name }}
+              </div>
+            </div>
+          </div>
+          <div class="board-column">
+            <div class="column-title">
+              Stuck
+            </div>
+            <div class="big-container"
+              cdkDropList
+              [cdkDropListData]="stuck"
+              (cdkDropListDropped)="drop($event)">
+              <div class="small-container is-size-5" *ngFor="let s of stuck" cdkDrag>
+                <button class="button is-danger is-small" style="margin-right: 3px;" (click)="openDialog(s)">
+                  <div class="icon">
+                    <i class="fas fa-exclamation"></i>
+                  </div>
+                </button>
+                {{ s._Task_Name }}
+              </div>
+            </div>
+          </div>
+          <div class="board-column">
+            <div class="column-title">
+              Done
+            </div>
+            <div class="big-container"
+              cdkDropList
+              [cdkDropListData]="done"
+              (cdkDropListDropped)="drop($event)">
+              <div class="small-container is-size-5" *ngFor="let d of done" cdkDrag>
+                <button class="button is-success is-small" style="margin-right: 3px;" (click)="openDialog(d)">
+                  <div class="icon">
+                    <i class="fas fa-angle-double-down"></i>
+                  </div>
+                </button>
+                {{ d._Task_Name }}
+              </div>
+            </div>
+          </div>
+    </div>
+    </div>
+  </div>
+</div>

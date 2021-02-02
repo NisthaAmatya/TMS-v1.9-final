@@ -1,0 +1,131 @@
+<head>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+</head>
+<div class="row">
+  <div class="column1"  style="background-color:rgb(245, 245, 245);">
+  <ng-container *ngIf="data">
+       <div class="column-title">
+        <ejs-inplaceeditor #taskname (submitClick)="changeTaskName(taskname.value)" mode="Inline" type="Text" value='{{data["_Task_Name"]}}'></ejs-inplaceeditor>
+      </div>
+      <div class="small-container is-size-5" >
+        <span>in project {{ projectName }}</span>
+      </div>
+      <!---->
+      <div class="topright">
+        <div class="card-detail-item" *ngIf="assignee_name">
+          <h3 class="card-detail-item-header">Assignee</h3>
+          <button class="button is-primary has-text-white pulled-right"> {{ assignee_name }}</button>
+        </div>
+        <div class="card-detail-item">
+          <h3 class="card-detail-item-header">Priority</h3>
+          <button *ngIf="data['_Priority']=='High'" [ngStyle]="{'background-color':'red', 'font-weight':'bold'}" class="button has-text-white is-link pulled-right"> {{data['_Priority']}}</button>
+          <button *ngIf="data['_Priority']=='Normal'" [ngStyle]="{'background-color':'wheat', 'font-weight':'bold'}" class="button has-text-white is-link pulled-right"> {{data['_Priority']}}</button>
+          <button *ngIf="data['_Priority']=='Low'" [ngStyle]="{'background-color':'blue', 'font-weight':'bold'}" class="button is-link pulled-right"> {{data['_Priority']}}</button>
+        </div>
+        <div class="card-detail-item">
+          <h3 class="card-detail-item-header">Status</h3>
+          <button *ngIf="data['_Status']=='New'" [ngStyle]="{'background-color':'aqua', 'font-weight':'bold'}" class="button is-link has-text-white pulled-right"> {{data['_Status']}}</button>
+          <button *ngIf="data['_Status']=='Ongoing'" [ngStyle]="{'background-color':'yellow', 'font-weight':'bold'}" class="button has-text-white is-link pulled-right"> {{data['_Status']}}</button>
+          <button *ngIf="data['_Status']=='Stuck'" [ngStyle]="{'background-color':'red', 'font-weight':'bold'}" class="button is-link has-text-white pulled-right"> {{data['_Status']}}</button>
+          <button *ngIf="data['_Status']=='Done'" [ngStyle]="{'background-color':'green', 'font-weight':'bold'}" class="button is-link has-text-white pulled-right"> {{data['_Status']}}</button>
+        </div>
+      </div>
+      <!---->
+      <div class="card-detail-item">
+        <h3 class="card-detail-item-header">Start Date</h3>
+        <button class="button-link card-detail-badge-due-date-button  has-background-white-bis">
+          <ejs-inplaceeditor #startdate (submitClick)="changeStartDate(startdate.value)" mode="Inline" type="Date" value='{{data["_Start_Date"]}}'></ejs-inplaceeditor>
+        </button>
+      </div>
+      <div class="card-detail-item">
+        <h3 class="card-detail-item-header">Due Date</h3>
+        <div class="card-detail-due-date-badge">
+          <button class="button-link card-detail-badge-due-date-button has-background-white-bis">
+            <ejs-inplaceeditor #duedate (submitClick)="changeEndDate(duedate.value)" mode="Inline" type="Date" value='{{data["_End_Date"]}}'></ejs-inplaceeditor>
+          </button>
+        </div>
+      </div>
+      <div class="u-clearfix"></div>
+      <div class="u-clearfix"></div>
+      <div class="card-detail-item-assignee">
+        <ng-container class="task-details" *ngIf="empname">
+          <h3 class="card-detail-item-header">Assignee</h3>
+          <div class="control">
+            <div class="select">
+              <select>
+                <option *ngIf="!isShow; else available_user">
+                  {{ empname }}
+                </option>
+                <ng-template #available_user>
+                  <option *ngFor="let emp of av_emp" (click)="chosenEmp(emp)">{{ emp._Emp_Name }} {{ emp._Num_Tasks }}</option>
+                </ng-template>
+              </select>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+      <div class="card-detail-item-select-skill">
+        <h3 class="card-detail-item-header">Select Skill</h3>
+        <div class="control">
+          <div class="select">
+            <select [(ngModel)]="selSkill">
+              <option>Select Skill</option>
+              <option *ngFor="let skill of skills" (click)="disp()">{{ skill._Skill_Name }}</option>
+            </select>
+            <br>
+          </div>
+        </div>
+        <button [disabled]="clicked" class="button is-right is-small" (click)="reSkill()">Get Available Employees</button>
+      </div>
+    <div class="u-clearfix"></div>
+      <div class="card-detail-item-desc">
+        <h3 class="u-inline-block">Description</h3>
+        <div class="field">
+          <div class="control">
+            <div class="box has-background-light">
+              <div class="media-content">
+                <div class="content">
+                  <p>
+                    <ejs-inplaceeditor #taskdesc (submitClick)="changeTaskDesc(taskdesc.value)" mode="Inline" type="Text" value='{{data["_Task_Desc"]}}'></ejs-inplaceeditor>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="u-clearfix"></div>
+    <div class="card-detail-item-desc">
+      <h3 class="u-inline-block">Comments</h3>
+      <div class="field">
+        <div class="control">
+          <div class="box has-background-light">
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <ejs-inplaceeditor #taskcomments (submitClick)="changeTaskComments(taskcomments.value)" mode="Inline" type="Text" value='{{data["_Comments"]}}'></ejs-inplaceeditor>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="u-clearfix"></div>
+      <div class="field is-grouped is-grouped-right" style="margin-top:40px">
+        <p class="control">
+          <a class="button is-primary has-text-white"(click)="updateTask()" >
+            Save
+          </a>
+        </p>
+        <p class="control">
+          <a class="button is-light" (click)="goBack()" style="border:1px solid grey">
+            Cancel
+          </a>
+        </p>
+      </div>
+  </ng-container>
+</div>
+</div>
+
+

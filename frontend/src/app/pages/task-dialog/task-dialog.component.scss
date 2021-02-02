@@ -1,0 +1,278 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700|Nunito:400,700,800,900');
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.column {
+  float: left;
+  width: 40%;
+  padding: 10px;
+  height: 550px;
+}
+.column1 {
+  float: left;
+  width: 100%;
+  padding: 10px;
+  height: 700px;
+  position: relative;
+}
+
+.window-title {
+  margin: 4px 0 0;
+  padding: 8px 0 0;
+}
+textarea.mod-card-back-title {
+  background: transparent;
+  border-radius: 3px;
+  box-shadow: none;
+  font-size: 20px;
+  font-weight: 600;
+  height: 32px;
+  line-height: 24px;
+  margin: -4px -8px;
+  min-height: 24px;
+  padding: 4px 8px;
+  resize: none;
+}
+
+.u-bottom {
+  margin-bottom: 2;
+  padding-bottom: 2;
+}
+.u-inline-block {
+  display: inline-block;
+}
+.column-title {
+  font-size: 20px;
+  font-weight: 800;
+  font-family: "Lato", sans-serif;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.move-to-the-right {
+  margin-left: 600px;
+}
+.button{
+  position: relative;
+  top:30;
+  right:70;
+
+}
+.topright {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  font-size: 18px;
+}
+
+.card-detail-item {
+  display: block;
+  float: left;
+  margin: 0 8px 8px 0;
+  max-width: 100%;
+  padding: 12px;
+}
+
+.card-detail-item-change-prio{
+  display: flex;
+  float: left;
+  margin: 0 8px 8px 0;
+  max-width: 70%;
+  margin-top: 16px;
+  padding: 18px;
+
+}
+
+.card-detail-item-header {
+  color: #5e6c84;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .04em;
+  line-height: 16px;
+  margin-top: 16px;
+  text-transform: uppercase;
+  display: block;
+  line-height: 20px;
+  margin: 0 8px 4px 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+
+
+.card-detail-due-date-badge{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0 8px 8px 0;
+  padding-right: 53px;
+}
+
+.card-detail-due-date-badge-prio{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0 8px 8px 0;
+
+}
+
+
+.card-detail-item-desc {
+  display: flex;
+  flex-direction: column;
+  margin: 0 8px 8px 0;
+  max-width: 100%;
+
+}
+.card-detail-item-assignee {
+  display: flex;
+  float: left;
+  flex-direction: column;
+  margin: 0 8px 8px 0;
+  max-width: 40%;
+
+
+}
+
+.card-detail-item-select-skill {
+  display: flex;
+  float: left;
+  flex-direction: column;
+  margin: 0 8px 8px 0;
+  max-width: 40%;
+  padding-left: 10px;
+
+
+}
+.card-detail-item-select-check-availemp {
+  display: flex;
+  float: left;
+  flex-direction: column;
+  margin: 0 8px 8px 0;
+  max-width: 40%;
+  padding-left: 10px;
+
+}
+
+.card-detail-item-prio {
+  display: flex;
+  flex-direction: column;
+  margin: 0 8px 8px 0;
+  max-width: 50%;
+
+}
+
+
+.card-detail-item-header-duedate {
+  color: #5e6c84;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  display: block;
+  line-height: 20px;
+  margin: 0 8px 4px 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+}
+.card-detail-badge-start-date-button {
+  margin: 0 8px 8px 0;
+  padding-right: 0;
+}
+
+.card-detail-badge-due-date-button{
+  margin:auto;
+  padding-right: 0;
+  border-radius: 5px;
+}
+
+.reduce-spacing {
+  padding: 4px;
+}
+
+.button-link {
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.button {
+	line-height: 20px;
+	color: #172b4d;
+	font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+	font-family: 'Lato';
+	}
+
+
+
+
+
+.card-detail-due-date {
+	position: relative;
+	border-radius: 2px;
+	height: 16px;
+	width: 16px;
+  margin: auto 4px auto 0;
+  float: left;
+
+}
+.to-the-right{
+  margin-left: 5px;
+}
+
+.window-module-title{
+	display: flex;
+	align-items: center;
+	min-height: 32px;
+}
+
+.window-module-title-no-divider {
+    border-bottom: none;
+}
+
+.window-module-panel, .window-module-title {
+    padding: 8px 0;
+    position: relative;
+    margin: 0 0 4px 40px;
+}
+
+.window-module {
+	clear: both;
+	margin-bottom: 24px;
+  position: relative;
+  margin-left: 0px;
+}
+
+.u-clearfix {
+	clear: both;
+	content: "";
+	display: table;
+}
+.u-gutter {
+  margin-left: 40px;
+}
+.description-content {
+  position: relative;
+}
+
+.u-bottom {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.description-edit  {
+	position: absolute;
+	bottom: 10px;
+	margin: 0;
+	right: -2px;
+	color: #172b4d;
+}
+.edit {
+  display: none;
+  position: relative;
+}

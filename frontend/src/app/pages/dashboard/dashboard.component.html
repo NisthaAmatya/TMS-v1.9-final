@@ -1,0 +1,202 @@
+<head>
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+    integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+    crossorigin="anonymous"
+  />
+</head>
+<!--</div>-->
+<div class="root">
+  <div class="navbar has-background-white">
+    <div class="navbar-brand">
+      <div class="navbar-item">
+        <h1 class="app-name has-gradient-text">
+          Melbourne Institute of Technology
+        </h1>
+      </div>
+    </div>
+  </div>
+  <div class="board">
+    <div class="board-bar">
+      <p class="board-name">Dashboard</p>
+      <button
+        class="button is-size-5 is-primary back-button"
+        style="margin-right: 10px; margin-left: 10px"
+      >
+        <div class="icon">
+          <i class="fas fa-arrow-left"></i>
+        </div>
+      </button>
+    </div>
+    <p class="title">Automatic Sorting</p>
+    <p class="item-title">Tasks Due:</p>
+    <div class="board-wrapper">
+      <div class="board-columns">
+        <div class="board-column-overdue">
+          <div class="column-title-overdue">Overdue</div>
+          <div
+            class="small-container is-size-5"
+            *ngFor="let t of overdueTasks"
+            (click)="openDialog(t)"
+          >
+            {{ t._Task_Name }}
+          </div>
+        </div>
+        <div class="board-column">
+          <div class="column-title">Today</div>
+          <div
+            class="small-container is-size-5"
+            *ngFor="let t of todayTasks"
+            (click)="openDialog(t)"
+          >
+            {{ t._Task_Name }}
+          </div>
+        </div>
+        <div class="board-column">
+          <div class="column-title">Tomorrow</div>
+          <div
+            class="small-container is-size-5"
+            *ngFor="let t of tomorrowTasks"
+            (click)="openDialog(t)"
+          >
+            {{ t._Task_Name }}
+          </div>
+        </div>
+        <div class="board-column">
+          <div class="column-title">This Week</div>
+          <div
+            class="small-container is-size-5"
+            *ngFor="let t of weekTasks"
+            (click)="openDialog(t)"
+          >
+            {{ t._Task_Name }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="board">
+      <p class="item-title">Projects Due:</p>
+      <div class="board-wrapper">
+        <div class="board-columns">
+          <div class="board-column-overdue">
+            <div class="column-title-overdue">Overdue</div>
+            <div
+              class="small-container is-size-5"
+              *ngFor="let p of overdueProjects"
+              (click)="openProjectDialog(p)"
+            >
+              {{ p._Proj_Name }}
+            </div>
+          </div>
+          <div class="board-column">
+            <div class="column-title">Today</div>
+            <div
+              class="small-container is-size-5"
+              *ngFor="let p of todayProjects"
+              (click)="openProjectDialog(p)"
+            >
+              {{ p._Proj_Name }}
+            </div>
+          </div>
+          <div class="board-column">
+            <div class="column-title">Tomorrow</div>
+            <div
+              class="small-container is-size-5"
+              *ngFor="let p of tomorrowProjects"
+              (click)="openProjectDialog(p)"
+            >
+              {{ p._Proj_Name }}
+            </div>
+          </div>
+          <div class="board-column">
+            <div class="column-title">This Week</div>
+            <div
+              class="small-container is-size-5"
+              *ngFor="let p of weekProjects"
+              (click)="openProjectDialog(p)"
+            >
+              {{ p._Proj_Name }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="board">
+        <p class="title">Customized Sorting</p>
+        <p class="item-title">Search by specific date</p>
+        <div class="board-wrapper">
+          <div class="board-columns">
+            <div class="board-column">
+              <div class="column-title">Select Task Date</div>
+              <ejs-inplaceeditor
+                #select_task_date
+                (submitClick)="selectTaskDate(select_task_date.value)"
+                mode="Inline"
+                type="Date"
+                value="{{ displayDate['_Date'] }}"
+              ></ejs-inplaceeditor>
+              <div
+                class="small-container is-size-5"
+                *ngFor="let t of selTasks"
+                (click)="openDialog(t)"
+              >
+                {{ t._Task_Name }}
+              </div>
+            </div>
+            <div class="board-column">
+              <div class="column-title">Select Project Date</div>
+              <ejs-inplaceeditor
+                #select_project_date
+                (submitClick)="selectProjectDate(select_project_date.value)"
+                mode="Inline"
+                type="Date"
+                value="{{ displayDate['_Date'] }}"
+              ></ejs-inplaceeditor>
+              <div
+                class="small-container is-size-5"
+                *ngFor="let p of selProjects"
+                (click)="openProjectDialog(p)"
+              >
+                {{ p._Proj_Name }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="board">
+          <p class="item-title">Search by Task Status</p>
+          <div class="board-wrapper">
+            <div class="board-columns">
+              <div class="board-column">
+                <div class="column-title">Select Task Status</div>
+                <div class="control">
+                  <div class="select">
+                    <select [(ngModel)]="selStatus">
+                      <option></option>
+                      <option (click)="selTaskbyStatus(selStatus)">New</option>
+                      <option (click)="selTaskbyStatus(selStatus)">
+                        Ongoing
+                      </option>
+                      <option (click)="selTaskbyStatus(selStatus)">
+                        Stuck
+                      </option>
+                      <option (click)="selTaskbyStatus(selStatus)">Done</option>
+                    </select>
+                  </div>
+                  <br /><br />
+                </div>
+                <div class="u-clearfix"></div>
+                <div
+                  class="small-container is-size-5"
+                  *ngFor="let t of selTask_byStatus"
+                  (click)="openDialog(t)"
+                >
+                  {{ t._Task_Name }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,70 @@
+<head>
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+    integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+    crossorigin="anonymous"
+  />
+</head>
+<div class="centered-content">
+  <div class="white1-box">
+    <h1 class="title has-text-primaryLogin">Login</h1>
+    <div class="field">
+      <p class="control has-icons-left has-icons-right">
+        <input
+          #usernameInput="ngModel"
+          ngModel
+          required
+          class="input has-background-light"
+          type="User Name"
+          placeholder="Email"
+        />
+        <span class="icon is-small is-left">
+          <i class="fas fa-envelope"></i>
+        </span>
+      </p>
+      <div
+        *ngIf="usernameInput.touched && !usernameInput.valid"
+        class="help is-danger has-text-light"
+      >
+        Email is required
+      </div>
+    </div>
+    <div class="field">
+      <p class="control has-icons-left">
+        <input
+          #passwordInput="ngModel"
+          ngModel
+          required
+          (keydown.enter)="
+            onKeydown($event, usernameInput.value, passwordInput.value)
+          "
+          class="input has-text-bold"
+          type="password"
+          placeholder="Password"
+        />
+        <span class="icon is-small is-left">
+          <i class="fas fa-lock"></i>
+        </span>
+      </p>
+      <div
+        *ngIf="passwordInput.touched && !passwordInput.valid"
+        class="help is-danger has-text-light"
+      >
+        Password is required
+      </div>
+    </div>
+    <div class="field is-pulled-left">
+      <p class="control">
+        <button
+          class="button is-success login-btn"
+          (click)="
+            onLoginButtonClicked(usernameInput.value, passwordInput.value)
+          "
+        >
+          Login
+        </button>
+      </p>
+    </div>
+  </div>
+</div>

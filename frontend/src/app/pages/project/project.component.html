@@ -1,0 +1,72 @@
+<head>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+</head>
+<div class="centered-content">
+  <div class="modal-box">
+    <h1 class="title">
+      Project
+    </h1>
+    <div>
+      <ng-container *ngIf="project">
+        <div class="project-details">
+          <p class="input is-size-6" >Project Name:</p>
+            <div class="display-box has-background-light is-rounded is-size-6">
+              <ejs-inplaceeditor #name_editor (submitClick)="nameChange(name_editor.value)" mode="Inline" type="Text" value="{{project['_Proj_Name']}}"></ejs-inplaceeditor>
+            </div>
+          <div class="project-details">
+            <p class="input is-size-6" >Project Description:</p>
+            <div class="display-box has-background-light is-rounded is-size-6">
+              <ejs-inplaceeditor #desc_editor (submitClick)="descChange(desc_editor.value)" mode="Inline" type="Text" value="{{project['_Proj_Desc']}}"></ejs-inplaceeditor>
+            </div>
+          </div>
+          <div class="project-details">
+            <p class="input is-size-6" >Project Start Date:</p>
+            <div class="display-box has-background-light is-rounded is-size-6">
+              <ejs-inplaceeditor #start_editor (submitClick)="startChange(start_editor.value)" mode="Inline" type="Date" value="{{project['_Start_Date']}}"></ejs-inplaceeditor>
+            </div>
+          </div>
+        </div>
+        <div class="project-details">
+          <p class="input is-size-6" >Project End Date:</p>
+          <div class="display-box has-background-light is-rounded is-size-6">
+            <ejs-inplaceeditor #end_editor (submitClick)="endChange(end_editor.value)" mode="Inline" type="Date" value="{{project['_End_Date']}}"></ejs-inplaceeditor>
+          </div>
+        </div>
+        <ng-container class="project-details" *ngIf="user">
+          <p class="input is-size-6" >Assigned Project Manager:</p>
+          <div class="control">
+            <div class="select">
+              <select>
+                <option *ngIf="!isShow; else available_pm">{{ user['_Emp_Name'] }}</option>
+                <ng-template #available_pm>
+                  <option *ngFor="let emp of av_emp" (click)="chosenPM(emp)">{{ emp._Emp_Name }}</option>
+                </ng-template>
+                <!--<option *ngIf="isShow">Atish</option>-->
+              </select>
+            </div>
+            <button class="button is-down" (click)="reSkill()">Change Project Manager</button>
+          </div>
+        </ng-container>
+      </ng-container>
+      <br><br>
+      <div class="buttons is-right">
+        <button class="button is-small is-primary has-text-white" (click)="gotoTasks()">View Tasks</button>
+        <button class="button is-small is-primary has-text-white" (click)="editOneProject()">
+          <div class="icon">
+            <i class="fas fa-check"></i>
+          </div>
+        </button>
+        <button class="button is-small is-danger" (click)="delOneProject()">
+          <div class="icon">
+            <i class="fas fa-trash"></i>
+          </div>
+        </button>
+        <button class="button is-small is-primary has-text-white" (click)='goOneBack()'>
+          <div class="icon">
+            <i class="fas fa-arrow-left"></i>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

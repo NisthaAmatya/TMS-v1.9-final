@@ -1,0 +1,41 @@
+@import "../../../main.styles.scss";
+
+.modal-box{
+  margin-top:4rem;
+  // height:700px;
+  border:1px solid rgb(204, 204, 204);
+  // padding:px;
+  h1.title{
+    color:$primary;
+  }
+  p{
+    margin-bottom:0;
+  }
+}
+
+label {
+  display: block;
+  font: 1rem 'Fira Sans', sans-serif;
+}
+
+input,
+label {
+  margin: .4rem 0;
+}
+
+
+.is-primary {
+  background-color: #ffffff;
+  color: #e41c37;
+  border: 1px solid;
+  border-color: #e41c37;
+}
+
+.is-primary:hover { 
+  background-color: #e41c37;
+  color: #ffffff;
+}
+
+.is-down {
+  color: #e41c37;
+}

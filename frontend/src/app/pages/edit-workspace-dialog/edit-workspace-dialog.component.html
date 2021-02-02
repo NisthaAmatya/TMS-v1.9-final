@@ -1,0 +1,33 @@
+<head>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+</head>
+<div class="centered-content">
+  <div class="small-modal-box">
+    <h1 class="title">
+      Edit Workspace
+    </h1>
+    <ng-container *ngIf="workspace">
+      <p class="input is-size-6">Workspace Name</p>
+        <div class="display-box has-background-light is-rounded is-size-6">
+          <ejs-inplaceeditor #name_editor (submitClick)="nameChange(name_editor.value)" mode="Inline" type="Text" value="{{workspace['_Work_Name']}}"></ejs-inplaceeditor>
+        </div>
+      <p class="input is-size-6">Workspace Description</p>
+        <div class="display-box has-background-light is-rounded is-size-6">
+          <ejs-inplaceeditor #desc_editor (submitClick)="descChange(desc_editor.value)" mode="Inline" type="Text" value="{{workspace['_Work_Desc']}}"></ejs-inplaceeditor>
+        </div>
+      <p class="input is-size-6"></p>
+    </ng-container>
+    <div class="buttons is-right">
+      <button class="button is-small is-primary has-text-white" (click)="editOneWorkspace()">
+        <div class="icon">
+          <i class="fas fa-check"></i>
+        </div>
+      </button>
+      <button class="button is-small is-primary has-text-white" (click)="goOneBack()">
+        <div class="icon">
+          <i class="fas fa-arrow-left"></i>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>

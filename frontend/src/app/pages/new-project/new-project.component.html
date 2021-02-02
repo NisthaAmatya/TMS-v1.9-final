@@ -1,0 +1,114 @@
+<div class="centered-content">
+  <div class="modal-box">
+    <h1 class="title">Create New Project</h1>
+    <p>Project Name</p>
+    <input
+      #pjInput1="ngModel"
+      class="input has-background-light is-medium"
+      type="text"
+      required
+      placeholder="Enter Project name..."
+      name="projectName"
+      ngModel
+    />
+    <div *ngIf="pjInput1.touched && !pjInput1.valid" class="help is-danger">
+      Project Name is required
+    </div>
+    <br />
+    <p>Description</p>
+    <input
+      #pjInput2="ngModel"
+      ngModel
+      required
+      class="input has-background-light is-medium"
+      type="text"
+      placeholder="Enter Project description..."
+    />
+    <div *ngIf="pjInput2.touched && !pjInput2.valid" class="help is-danger">
+      Project Description is required
+    </div>
+    <br />
+    <div>
+      <label for="start">Start Date:</label>
+
+      <input
+        #pjInput3="ngModel"
+        ngModel
+        required
+        type="date"
+        id="start"
+        name="project-start"
+        value=""
+        min="2020-01-01"
+        max="2050-12-31"
+      />
+      <div *ngIf="pjInput3.touched && !pjInput3.valid" class="help is-danger">
+        Project Start Date is required
+      </div>
+    </div>
+    <br /><br />
+    <div>
+      <label for="end">End Date:</label>
+
+      <input
+        #pjInput4="ngModel"
+        ngModel
+        required
+        type="date"
+        id="end"
+        name="project-end"
+        value=""
+        min="2020-01-01"
+        max="2050-12-31"
+      />
+      <div *ngIf="pjInput4.touched && !pjInput4.valid" class="help is-danger">
+        Project End Date is required
+      </div>
+    </div>
+    <br /><br />
+    <div class="control">
+      <div class="select">
+        <select>
+          <option>Select Project Manager</option>
+          <option *ngFor="let emp of av_emp" (click)="chosenPM(emp)">
+            {{ emp._Emp_Name }}
+          </option>
+        </select>
+      </div>
+      <button
+        class="button is-down"
+        (click)="reSkill(pjInput3.value, pjInput4.value)"
+      >
+        Get Available Project Manager
+      </button>
+    </div>
+    <br /><br />
+    <div>
+      <p>Comments</p>
+      <input
+        #comm
+        class="input has-background-light is-medium"
+        type="text"
+        placeholder="Add details"
+      />
+    </div>
+    <br /><br />
+    <div class="buttons is-right">
+      <button class="button is-medium" (click)="goBack()">Cancel</button>
+      <button
+        class="button is-primary is-medium"
+        (click)="
+          createNewProject(
+            pjInput1.value,
+            pjInput2.value,
+            pjInput3.value,
+            pjInput4.value,
+            comm.value
+          )
+        "
+      >
+        Create
+      </button>
+    </div>
+  </div>
+</div>

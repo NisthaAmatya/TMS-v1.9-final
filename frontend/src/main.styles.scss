@@ -1,0 +1,139 @@
+// This is where we put global styles and change variable values
+
+// Import Fonts (Lato and Nunito)
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700|Nunito:400,700,800,900");
+
+$turquoise: #44ddd0;
+$green: #27d7a1;
+$light-green: #45f69e;
+$dark-green: rgb(0, 100, 80);
+
+$light: #f8f8f8;
+
+
+$red:#e41c37;
+
+// Update Bulma's global variables
+$family-sans-serif: "Nunito", sans-serif;
+$primary: $red;
+
+$dark-grey:#414244;
+
+$link: $turquoise;
+
+// Update some of Bulma's component variables
+
+$control-border-width: 2px;
+$input-border-color: transparent;
+$input-shadow: none;
+
+// Set custom global styles (will be applied to whole app)
+
+html {
+  // background-image: url('./assets/background.svg');
+  // background-color: #45f69e;
+  // background: linear-gradient(to right top, $turquoise, $green);
+  background-size: cover;
+  overflow-y: auto !important;
+}
+
+html,
+ng body {
+  height: 100%;
+}
+
+.centered-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.right-content {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.left-content {
+  padding: 20px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.modal-box {
+  min-height: 600px;
+  width: 100%;
+  max-width: 580px;
+  background: white;
+  border-radius: 5px;
+  padding: 35px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.small-modal-box {
+  min-height: 300px;
+  width: 100%;
+  max-width: 580px;
+  background: white;
+  border-radius: 5px;
+  padding: 35px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.title {
+  font-family: "Lato";
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.white-box {
+  padding: 35px;
+  background: white;
+  border-radius: 5px;
+  width: 350px;
+  max-width: 350px;
+}
+
+.display-box {
+  padding: 10px;
+  max-width: 580px;
+  border-radius: 15px;
+}
+
+.title_1 {
+  font-family: "Lato";
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.e-inplaceeditor .e-editable-value-wrapper .e-editable-value {
+  border-bottom: 2px dotted $primary;
+  font-size: 18px;
+  background-color: $light;
+}
+
+// Styling for form components
+
+input:focus{
+  // border-color: $primary;
+  border-color: transparent;
+    box-shadow: 0 0 0 0.125em rgba(224, 56, 56, 0.25);
+}
+
+select:focus{
+  border-color: transparent;
+    box-shadow: 0 0 0 0.125em rgba(224, 56, 56, 0.25);
+}
+

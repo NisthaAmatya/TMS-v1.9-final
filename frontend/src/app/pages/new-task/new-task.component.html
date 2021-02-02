@@ -1,0 +1,172 @@
+<head>
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+    integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+    crossorigin="anonymous"
+  />
+</head>
+<div class="centered-content">
+  <div class="modal-box">
+    <h1 class="title">Create Task</h1>
+    <p>Task Name</p>
+    <input
+      #tkName="ngModel"
+      ngModel
+      required
+      class="input has-background-light is-medium"
+      type="text"
+      placeholder="Enter Task name..."
+    />
+    <div *ngIf="tkName.touched && !tkName.valid" class="help is-danger">
+      Task Name is required
+    </div>
+    <br />
+    <p>Description</p>
+    <input
+      #tkDesc="ngModel"
+      ngModel
+      required
+      class="input has-background-light is-medium"
+      type="text"
+      placeholder="Enter Task description..."
+    />
+    <div *ngIf="tkDesc.touched && !tkDesc.valid" class="help is-danger">
+      Task Description is required
+    </div>
+    <br />
+    <div>
+      <label for="start">Start Date:</label>
+      <br />
+      <input
+        #tkStart="ngModel"
+        ngModel
+        required
+        type="date"
+        id="start"
+        name="project-start"
+        value=""
+        min="2020-01-01"
+        max="2050-12-31"
+      />
+      <div *ngIf="tkStart.touched && !tkStart.valid" class="help is-danger">
+        Start Date is required
+      </div>
+      <br />
+    </div>
+    <br />
+    <div>
+      <label for="end">End Date:</label>
+      <br />
+      <input
+        #tkEnd="ngModel"
+        ngModel
+        required
+        type="date"
+        id="end"
+        name="project-end"
+        value=""
+        min="2020-01-01"
+        max="2050-12-31"
+      />
+      <div *ngIf="tkEnd.touched && !tkEnd.valid" class="help is-danger">
+        End Date is required
+      </div>
+      <br /><br />
+    </div>
+    <div>
+      <div class="control">
+        <div class="select">
+          <select [(ngModel)]="selSkill">
+            <option>Select Skill</option>
+            <option *ngFor="let skill of skills">
+              {{ skill._Skill_Name }}
+            </option>
+          </select>
+        </div>
+        <br />
+        <button
+          class="button is-right is-small"
+          (click)="reSkill(selSkill, tkStart.value, tkEnd.value)"
+        >
+          Get Available Employees
+        </button>
+      </div>
+      <!-------------------------------------------------
+      <div *ngFor="let emp of avail_emp">
+          <label class="radio">
+            <input type="radio" name="selected-emp">
+            {{ emp._Emp_Name }}
+          </label>
+      </div>
+      --------------------------------------------------->
+      <div class="control">
+        <div class="select">
+          <select>
+            <option>Select Available User</option>
+            <option *ngFor="let emp of avail_emp" (click)="chosenEmp(emp)">
+              {{ emp._Emp_Name }} {{ emp._Num_Tasks }}
+            </option>
+          </select>
+        </div>
+        <br />
+        <!--<button class="button is-right is-small" (click)="rePriority(selEmp)"> Assign Task to Employee </button>-->
+      </div>
+      <!--------------------------------------------------------------------->
+      <br />
+      <!--<button class="button is-down" (click)="rePriority(result)"> Test </button>-->
+      <br />
+      <p>Comments</p>
+      <input
+        #tkComm
+        class="input has-background-light is-medium"
+        type="text"
+        placeholder="Add details"
+      />
+      <br />
+    </div>
+    <br /><br />
+    <div class="control">
+      <p>Select Priority</p>
+      <div class="select">
+        <select [(ngModel)]="selPrio">
+          <option>High</option>
+          <option>Normal</option>
+          <option>Low</option>
+        </select>
+      </div>
+      <br /><br />
+      <div class="file">
+        <label class="file-label">
+          <input class="file-input" type="file" name="resume" />
+          <span class="file-cta">
+            <span class="file-icon">
+              <i class="fas fa-upload"></i>
+            </span>
+            <span class="file-label"> Choose a file… </span>
+          </span>
+        </label>
+      </div>
+    </div>
+    <div class="buttons is-right">
+      <button class="button is-medium" (click)="goBack()">Cancel</button>
+      <button
+        class="button is-primary has-text-white is-medium"
+        (click)="
+          createNewTask(
+            tkName.value,
+            tkDesc.value,
+            tkStart.value,
+            tkEnd.value,
+            selPrio,
+            AttachFile,
+            tkComm.value,
+            'New'
+          )
+        "
+      >
+        Create
+      </button>
+    </div>
+  </div>
+</div>

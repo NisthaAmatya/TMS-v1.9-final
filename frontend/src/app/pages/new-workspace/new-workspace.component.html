@@ -1,0 +1,58 @@
+<head>
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+    integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+    crossorigin="anonymous"
+  />
+</head>
+<div class="centered-content">
+  <div class="small-modal-box">
+    <h1 class="title">Create a new workspace</h1>
+    <p class="is-size-6">Workspace Name</p>
+    <input
+      #wsInput1="ngModel"
+      class="input has-background-light is-medium"
+      type="text"
+      required
+      placeholder="Enter Workspace name..."
+      ngModel
+      (change)="log(wsInput1)"
+      name="worspaceName"
+    />
+    <div *ngIf="wsInput1.touched && !wsInput1.valid" class="help is-danger">
+      Workspace Name is required
+    </div>
+    <br /><br />
+    <p class="is-size-6">Workspace Description</p>
+    <input
+      #wsInput2="ngModel"
+      class="input has-background-light is-medium"
+      type="text"
+      required
+      ngModel
+      (change)="log(wsInput2)"
+      placeholder="Enter Workspace description..."
+      name="workspaceDescription"
+    />
+    <div *ngIf="wsInput2.touched && !wsInput2.valid" class="help is-danger">
+      Workspace Description is required
+    </div>
+    <br /><br />
+    <div class="buttons is-right">
+      <button class="button is-small has-text-grey" (click)="closeDiag()">
+        <div class="icon">
+          <i class="fas fa-times"></i>
+        </div>
+      </button>
+      <button
+        class="button is-small is-primary has-text-white"
+        (click)="createNewWorkspace(wsInput1.value, wsInput2.value)"
+      >
+        <div class="icon">
+          <i class="fas fa-check"></i>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
